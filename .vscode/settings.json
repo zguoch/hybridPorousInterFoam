@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "*Dict": "OpenFOAM",
+        "*Properties": "OpenFOAM",
+        "fvSchemes": "OpenFOAM",
+        "fvSolution": "OpenFOAM",
+        "*.mcr": "shellscript",
+        "boundary": "OpenFOAM",
+        "U": "OpenFOAM",
+        "p": "OpenFOAM",
+        "T": "OpenFOAM",
+        "*.pyx": "python",
+        "*.pxd": "python",
+        "*.rst": "restructuredtext",
+        "p_rgh": "OpenFOAM",
+        "thermophysicalProperties.*": "OpenFOAM",
+        "pcVanGenuchten.C": "cpp",
+        "hybridPorousInterFoam.C": "cpp"
+    }
+}

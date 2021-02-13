@@ -115,16 +115,17 @@ namespace Foam
       volScalarField correctAndSb(volScalarField h) 
       {          
         //- Compute Saturation from! head pressure
-        h.dimensions().reset(dimless);
-        volScalarField Stmp_ = neg(h) *(Sminpc_+(Smaxpc_-Sminpc_)*pow(1.0+pow(alpha_*mag(h),n_),-m_)) + pos(h)*(Smaxpc_-SMALL);
-        h.dimensions().reset(dimLength);  
+        // h.dimensions().reset(dimless);
+        // volScalarField Stmp_ = neg(h) *(Sminpc_+(Smaxpc_-Sminpc_)*pow(1.0+pow(alpha_*mag(h),n_),-m_)) + pos(h)*(Smaxpc_-SMALL);
+        // h.dimensions().reset(dimLength);  
 
         //- Update effective saturation and capillary capacity
-	Se_ == (Stmp_- Sminpc_)/(Smaxpc_-Sminpc_);
-        Ch_.dimensions().reset(dimless);
-        Ch_ == alpha_*m_*(Smaxpc_-Sminpc_)/(1.0-m_)*pow(Se_,1.0/m_)*pow(1.0-pow(Se_,1.0/m_),m_) ;
-        Ch_.dimensions().reset(dimless/dimLength);
-        return Stmp_;
+	// Se_ == (Stmp_- Sminpc_)/(Smaxpc_-Sminpc_);
+        // Ch_.dimensions().reset(dimless);
+        // Ch_ == alpha_*m_*(Smaxpc_-Sminpc_)/(1.0-m_)*pow(Se_,1.0/m_)*pow(1.0-pow(Se_,1.0/m_),m_) ;
+        // Ch_.dimensions().reset(dimless/dimLength);
+        // return Stmp_;
+        return Se_;
       }
 
       //- Capillary capacity (Richards' model)
