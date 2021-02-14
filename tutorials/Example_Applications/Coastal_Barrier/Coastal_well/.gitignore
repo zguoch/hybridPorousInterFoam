@@ -8,6 +8,9 @@ log*
 !system
 !*.sh
 !gmsh
-gmsh/box.msh
+gmsh/*.msh
 *.mp4
 animation.py
+0/K
+0/eps
+0/alpha.wetting
