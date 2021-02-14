@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+regions
+(
+    boxToCell
+    {
+        box (-100 -990 -1) (2300 -100 1);
+        fieldValues
+        (
+            volScalarFieldValue alpha.wetting 1
+        );
+    }
+    zoneToCell
+    {
+        name "crust";
+        fieldValues
+        (
+            volScalarFieldValue alpha.wetting 0
+            volScalarFieldValue eps 0.2
+        );
+    }
+    // aquifer layer
+    boxToCell
+    {
+        box (-100 -750 -1) (2300 -600 1);
+        fieldValues
+        (
+            volScalarFieldValue K 5E-9
+        );
+    }
+    // base water layer
+    boxToCell
+    {
+        box (-100 -1200 -1) (2300 -650 1);
+        fieldValues
+        (
+            volScalarFieldValue alpha.wetting 1
+        );
+    }
+    zoneToCell
+    {
+        name "well";
+        fieldValues
+        (
+            volScalarFieldValue alpha.wetting 0
+            volScalarFieldValue eps 1
+        );
+    }
+    zoneToCell
+    {
+        name "lake";
+        fieldValues
+        (
+            volScalarFieldValue eps 1
+        );
+    }
+);
+
+
+// ************************************************************************* //

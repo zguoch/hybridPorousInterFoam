@@ -15,6 +15,7 @@
         "p_rgh": "OpenFOAM",
         "thermophysicalProperties.*": "OpenFOAM",
         "pcVanGenuchten.C": "cpp",
-        "hybridPorousInterFoam.C": "cpp"
+        "hybridPorousInterFoam.C": "cpp",
+        "hybridPorousPimpleFoam.C": "cpp"
     }
 }
