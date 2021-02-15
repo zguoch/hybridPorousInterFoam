@@ -1,0 +1,16 @@
+*/
+log.*
+pid*
+log*
+
+!0
+!constant
+!system
+!*.sh
+!gmsh
+gmsh/*.msh
+*.mp4
+animation.py
+0/K
+0/eps
+0/alpha.wetting

@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      Uwetting;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+
+    top
+    {
+        type            slip;
+    }
+
+    inlet
+    {
+        type            codedFixedValue;
+        value           uniform (0 0 0); //placeholder
+        name            gaussShapeU_wetting;
+        code            #{
+                            scalarField y(this->patch().Cf().component(1)); 
+                            vectorField U( this->patch().Cf() );
+                            double H = 0.05;
+                            forAll(U, i)
+                            {
+                                U[i][0] = 6.0*(y[i]/H)*(1 - y[i]/H);
+                                U[i][1]=0;
+                                U[i][2]=0;
+                            }
+                            operator==(U);
+                        #};
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    bottom
+    {
+        type            slip;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

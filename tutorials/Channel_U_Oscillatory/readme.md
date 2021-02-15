@@ -1,0 +1,1 @@
+This model setup comes from [Aguerre et al.(2018)](https://doi.org/10.1016/j.jcp.2018.03.033), Fig. 10.
