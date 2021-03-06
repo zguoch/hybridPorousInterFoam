@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     hybridPorousInterFoam;
+application     hybridPorousPimpleFoam;
 
 startFrom       latestTime;
 
@@ -29,7 +29,7 @@ deltaT          1e-9;
 
 writeControl    adjustableRunTime;
 
-writeInterval   25e-7;
+writeInterval   5e-3;
 
 purgeWrite      0;
 

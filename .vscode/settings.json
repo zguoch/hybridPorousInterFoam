@@ -16,6 +16,9 @@
         "thermophysicalProperties.*": "OpenFOAM",
         "pcVanGenuchten.C": "cpp",
         "hybridPorousInterFoam.C": "cpp",
-        "hybridPorousPimpleFoam.C": "cpp"
+        "hybridPorousPimpleFoam.C": "cpp",
+        "HerschelBulkleyQuemada.C": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     }
 }
