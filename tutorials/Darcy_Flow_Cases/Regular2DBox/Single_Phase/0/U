@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+
+    left
+    {
+        type slip;
+    }
+    right
+    {
+        type slip;
+    }
+    bottom
+    {
+        type            codedFixedValue;
+        value           uniform (0 0 0); //placeholder
+        name            gaussShapeU;
+        code            #{
+                            scalarField x(this->patch().Cf().component(0)); 
+                            vectorField U( this->patch().Cf() );
+                            double H = 0.05;
+                            forAll(U, i)
+                            {
+                                U[i][0] = 0;
+                                U[i][2] = 0;
+                                if(x[i]>=980 && x[i]<=1020)
+                                {
+                                    U[i][1]=1E-5;
+                                }else
+                                {
+                                    U[i][1] = 0;
+                                }
+                                
+                            }
+                            operator==(U);
+                        #};
+    }
+    top
+    {
+        type            zeroGradient;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //
